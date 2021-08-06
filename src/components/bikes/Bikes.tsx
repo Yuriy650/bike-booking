@@ -83,6 +83,7 @@ const Bikes = () => {
     }
     const availableCount = () => {
         let available = 0
+        // eslint-disable-next-line
         bikesList.map((item) => {
             if (item.status !== '' && item.status === 'available') {
                 available++;
