@@ -28,7 +28,6 @@
     color: #E8E8E8;
     text-align: left;
     vertical-align: top;
-    fill: solid;
     font-weight: 400;
   }
 
@@ -61,12 +60,16 @@
   padding: 0;
   margin: 0;
 }
-
+hr{
+  margin-left: 10px;
+  margin-right: 10px;
+  color: #C4C4C4
+}
 .form-container {
   background-color: #ffffff;
   margin: 0;
   padding: 0;
-
+position: relative;
   input {
     font-size: 12px;
     font-weight: 400;
@@ -113,7 +116,6 @@
   }
 
   .btn-save, .btn-clear {
-
     width: 265.23px;
     border-radius: 5px;
     padding: 4px 23px;
@@ -125,6 +127,12 @@
     color: #ffffff;
     margin: 4px 6px 16px 9px;
     border: none;
+  }
+  .btn-save:hover {
+    cursor: pointer
+  }
+  .btn-clear:hover{
+    cursor: pointer
   }
 }
 
@@ -170,5 +178,5 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+border-right: 1px solid #C4C4C4;
 }

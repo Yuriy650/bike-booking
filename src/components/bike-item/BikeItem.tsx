@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import './bike-item.scss';
 import {Bike} from "../../interfaces";
 import localForage from 'localforage';
 
 const BikeItem = (props: any) => {
-    const [newBikesList, setNewBikesList] = useState([])
     const removeItem = (e: React.MouseEvent<HTMLButtonElement>) => {
         console.log(e.currentTarget.id);
         localForage.removeItem(e.currentTarget.id)
@@ -25,7 +24,6 @@ useEffect(()=>{
         props.bikesList.map((item:Bike)=>{
            if (item.status !== '' && item.status === 'available') {
                avail++;
-               console.log(avail)
            }
        })
        props.changeCountAvail(avail)
@@ -38,7 +36,6 @@ useEffect(()=>{
                 .then((value: any) => {
                     if (item === e.target.id) {
                         value.status = e.target.value
-                        console.log(value)
                         localForage.setItem(item, value)
                             .then(()=>getCountAvailable())
                     }
@@ -46,17 +43,14 @@ useEffect(()=>{
                 .catch((err) => {
                     console.log(err);
                 });
-
         })
         props.bikesList.map((item:Bike) => {
             if(item.id === e.target.id) {
                 item.status = e.target.value
             }
         })
-        console.log(props.bikesList)
         props.changeStatus(props.bikesList)
    }
-
     return (
         <div className="bike-container">
             <div className={`bike-container__body-${props.item.status}`}>
@@ -84,5 +78,4 @@ useEffect(()=>{
         </div>
     )
 }
-
 export default BikeItem;

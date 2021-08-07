@@ -22,6 +22,7 @@ const Bikes = () => {
     const [keys, setKeys] = useState<string[]>([]);
     const [availables, setAvailables] = useState<number>(0)
     const {id, name, type, color, wheel, price, description} = newBike;
+
     const onChange = (e: any) => {
         setNewBike((prevState) => ({
             ...prevState,
@@ -37,7 +38,6 @@ const Bikes = () => {
         localForage.setItem(`${newBike.id}`, newBike)
             .then((value) => {
                 setBikesList(prevState => [...prevState, value])
-                console.log(value);
             })
             .catch((error) => {
                 console.log(error)
@@ -51,7 +51,6 @@ const Bikes = () => {
         localForage.keys()
             .then((keys) => {
                 setKeys(keys);
-                console.log(keys)
             })
             .catch((err) => {
                 console.log(err);
@@ -91,9 +90,8 @@ const Bikes = () => {
         })
         return available
     }
-   const changeCountAvail = (availables: number) => {
+    const changeCountAvail = (availables: number) => {
         setAvailables(availables)
-        console.log(availables)
     }
     const bookedCount = () => {
         let busy = 0
@@ -123,6 +121,7 @@ const Bikes = () => {
                             Amet aut consectetur et ipsa ipsam labore quae quibusdam reprehenderit rerum, voluptatem.
                         </div>
                     </div>
+                    <div className="vertical-line"></div>
                     <div className="add-bike">
                         <div className="form-container">
                             <form onSubmit={onSubmitHandler}>
@@ -193,6 +192,7 @@ const Bikes = () => {
                                 </div>
                             </form>
                         </div>
+                        <hr/>
                         <div className="statistic-container">
                             <ul>
                                 <span className="statistic-container__title">Statistics</span>
