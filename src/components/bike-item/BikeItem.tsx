@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './bike-item.scss';
 import {Bike} from "../../interfaces";
 import localForage from 'localforage';
 
 const BikeItem = (props: any) => {
+    const [newBikesList, setNewBikesList] = useState([])
     const removeItem = (e: React.MouseEvent<HTMLButtonElement>) => {
         console.log(e.currentTarget.id);
         localForage.removeItem(e.currentTarget.id)
@@ -15,7 +16,9 @@ const BikeItem = (props: any) => {
         const bikes = props.bikesList.filter((item: Bike) => item.id !== e.currentTarget.id);
         props.changeBikesList(bikes)
     }
-
+useEffect(()=>{
+    getCountAvailable()
+}, [])
    const getCountAvailable = () => {
         let avail = 0;
        // eslint-disable-next-line
@@ -45,6 +48,13 @@ const BikeItem = (props: any) => {
                 });
 
         })
+        props.bikesList.map((item:Bike) => {
+            if(item.id === e.target.id) {
+                item.status = e.target.value
+            }
+        })
+        console.log(props.bikesList)
+        props.changeStatus(props.bikesList)
    }
 
     return (

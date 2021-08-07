@@ -197,7 +197,7 @@ const Bikes = () => {
                             <ul>
                                 <span className="statistic-container__title">Statistics</span>
                                 <li>Total Bikes: <span>{bikesList.length}</span></li>
-                                <li>Available Bikes: <span>{availables}</span></li>
+                                <li>Available Bikes: <span>{availableCount()}</span></li>
                                 <li>Booked Bikes: <span>{bookedCount()}</span></li>
                                 <li>Average bike cost:<span>{averageCost()}</span>UAH/hour</li>
                             </ul>
